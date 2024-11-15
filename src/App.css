@@ -1,0 +1,136 @@
+/* Container Principal */
+.app-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Caixa de Filtro Melhorada */
+.filter-box {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px; /* Ajustado para a direita */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  max-width: 270px;
+  backdrop-filter: blur(10px); /* Efeito de desfoque */
+  animation: slide-in 0.5s ease-out; /* Animação de entrada */
+}
+
+/* Efeito de Animação */
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.filter-box:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Título do Projeto */
+.project-title {
+  margin: 0 0 15px 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #34495e;
+  text-align: center;
+  width: 100%;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+}
+
+/* Estilo dos Inputs de Checkbox */
+input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #3498db;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+/* Estilo dos Labels */
+label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #555;
+  padding: 8px 12px;
+  width: 100%;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+label:hover {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Popup de Informação */
+.leaflet-popup-content {
+  font-size: 14px;
+  padding: 12px;
+  color: #34495e;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.leaflet-popup-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Botão de Mostrar/Ocultar Filtros */
+.toggle-filters-button {
+  position: absolute;
+  top: 15px;
+  right: 20px; /* Ajustado para a direita */
+  z-index: 1100;
+  padding: 12px 15px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.toggle-filters-button:hover {
+  background-color: #2980b9;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .filter-box {
+    width: 90%;
+    right: 5%;
+    padding: 15px;
+  }
+
+  .project-title {
+    font-size: 20px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+}
