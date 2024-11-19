@@ -6,7 +6,7 @@
   font-family: 'Roboto', sans-serif;
 }
 
-/* Caixa de Filtro Melhorada */
+/* Quadro de Filtro*/
 .filter-box {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid #ccc;
@@ -14,7 +14,7 @@
   padding: 20px;
   position: absolute;
   top: 20px;
-  right: 20px; /* Ajustado para a direita */
+  right: 25px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -23,11 +23,12 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease-in-out;
   max-width: 270px;
-  backdrop-filter: blur(10px); /* Efeito de desfoque */
-  animation: slide-in 0.5s ease-out; /* Animação de entrada */
+  backdrop-filter: blur(10px);
+  animation: slide-in 0.5s ease-out;
+  height: 420px;
 }
 
-/* Efeito de Animação */
+/* Animação */
 @keyframes slide-in {
   0% {
     opacity: 0;
@@ -43,7 +44,7 @@
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Título do Projeto */
+/* Título */
 .project-title {
   margin: 0 0 15px 0;
   font-size: 24px;
@@ -55,7 +56,7 @@
   padding-bottom: 8px;
 }
 
-/* Estilo dos Inputs de Checkbox */
+/* Estilo do Checkbox */
 input[type="checkbox"] {
   margin-right: 10px;
   accent-color: #3498db;
@@ -81,7 +82,7 @@ label:hover {
   color: white;
 }
 
-/* Popup de Informação */
+/* Popup */
 .leaflet-popup-content {
   font-size: 14px;
   padding: 12px;
@@ -101,8 +102,8 @@ label:hover {
 /* Botão de Mostrar/Ocultar Filtros */
 .toggle-filters-button {
   position: absolute;
-  top: 15px;
-  right: 20px; /* Ajustado para a direita */
+  top: 800px;
+  right: 20px;
   z-index: 1100;
   padding: 12px 15px;
   background-color: #3498db;

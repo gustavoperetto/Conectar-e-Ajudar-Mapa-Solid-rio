@@ -54,6 +54,11 @@ const App = () => {
   };
 
   const toggleFilters = () => {
+    if (showFilters) {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
     setShowFilters(!showFilters);
   };
 
@@ -70,11 +75,8 @@ const App = () => {
       <button 
         className="toggle-filters-button"
         onClick={toggleFilters}
-        style={{
-          display: showFilters ? 'none' : 'block',
-        }}
       >
-        Mostrar Filtros
+        {showFilters ? 'Ocultar Filtros' : 'Mostrar Filtros'}
       </button>
 
       {showFilters && (
