@@ -13,7 +13,7 @@
   border-radius: 12px;
   padding: 20px;
   position: absolute;
-  top: 20px;
+  top: 70px;
   right: 25px;
   z-index: 1000;
   display: flex;
@@ -102,7 +102,7 @@ label:hover {
 /* Botão de Mostrar/Ocultar Filtros */
 .toggle-filters-button {
   position: absolute;
-  top: 800px;
+  top: 20px;
   right: 20px;
   z-index: 1100;
   padding: 12px 15px;
@@ -115,7 +115,25 @@ label:hover {
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.toggle-filters-button:hover {
+.add-marker-button {
+  position: absolute;
+  top: 82%;
+  left: 50%;
+  transform: translate(-50%, -18%);
+  z-index: 1100;
+  padding: 12px 15px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+
+.toggle-filters-button,
+.add-marker-button:hover {
   background-color: #2980b9;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
 }
@@ -133,5 +151,113 @@ label:hover {
 
   label {
     font-size: 14px;
+  }
+}
+
+/* Modal Overlay - Fundo desfocado */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1200;
+}
+
+/* Estilo do Modal */
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.4s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Animação do Modal */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Título do Modal */
+.modal h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #34495e;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+/* Campos de Entrada no Modal */
+.modal label {
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal input[type="text"] {
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #34495e;
+  transition: border-color 0.3s;
+}
+
+.modal input[type="text"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Botão de Salvar no Modal */
+.modal button {
+  background-color: #3498db;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-top: 10px;
+}
+
+.modal button:hover {
+  background-color: #2980b9;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Cursor Customizado ao Adicionar Marcador */
+.map-add-marker-cursor {
+  cursor: crosshair;
+}
+
+/* Responsividade para Modal */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+  }
+
+  .modal h2 {
+    font-size: 18px;
   }
 }
