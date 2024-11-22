@@ -5,7 +5,8 @@ import './App.css';
 
 const App = () => {
   const position = [-26.292977, -48.848306];
-  const categories = ["Comida Solidária", "Abrigo", "Emergência", "Centros de Ajuda", "CAPS"];
+
+  const categories = ["food", "shelter", "emergency", "helpCenter", "caps"];
 
   const [markers, setMarkers] = useState([
     {
@@ -29,6 +30,8 @@ const App = () => {
   const [showFilters, setShowFilters] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [isAddingMarker, setIsAddingMarker] = useState(false);
+
+  // Estado para armazenar um novo marcador enquanto está sendo adicionado
   const [newMarker, setNewMarker] = useState({
     position: null,
     title: '',
@@ -56,7 +59,7 @@ const App = () => {
 
   // Filtra os marcadores com base nos filtros ativos
   const filteredMarkers = markers.filter((marker) => {
-    const categoryKey = marker.category.toLowerCase();
+    const categoryKey = marker.category;
     return activeFilters[categoryKey];
   });
 
@@ -67,7 +70,7 @@ const App = () => {
         position: [e.latlng.lat, e.latlng.lng],
       }));
       setShowModal(true);
-      setIsAddingMarker(false); // Reseta o estado para não permitir múltiplos cliques
+      setIsAddingMarker(false);
     }
   };
 
@@ -76,7 +79,6 @@ const App = () => {
   };
 
   const handleCancel = () => {
-    // Reseta o estado do marcador novo e fecha o modal
     setNewMarker({
       position: null,
       title: '',
@@ -86,19 +88,14 @@ const App = () => {
       info: '',
     });
     setShowModal(false);
-    setIsAddingMarker(false); // Permite manipulação do mapa novamente
+    setIsAddingMarker(false);
   };
 
   const handleSaveMarker = () => {
     if (newMarker.title && newMarker.position) {
-      // Adiciona o novo marcador à lista de marcadores
-      const newMarkerData = {
-        ...newMarker,
-        category: newMarker.category.toLowerCase().replace(/\s+/g, ''),
-      };
+      const newMarkerData = { ...newMarker };
       setMarkers((prevMarkers) => [...prevMarkers, newMarkerData]);
 
-      // Fecha o modal e reseta o estado
       setShowModal(false);
       setIsAddingMarker(false);
       setNewMarker({
@@ -143,46 +140,16 @@ const App = () => {
       {showFilters && (
         <div className="filter-box">
           <h1 className="project-title">Conectar e Ajudar: Mapa Solidário</h1>
-          <label>
-            <input
-              type="checkbox"
-              name="food"
-              checked={activeFilters.food}
-              onChange={() => handleFilterChange('food')}
-            /> Comida Solidária
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="shelter"
-              checked={activeFilters.shelter}
-              onChange={() => handleFilterChange('shelter')}
-            /> Abrigo
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="emergency"
-              checked={activeFilters.emergency}
-              onChange={() => handleFilterChange('emergency')}
-            /> Emergência
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="helpCenter"
-              checked={activeFilters.helpCenter}
-              onChange={() => handleFilterChange('helpCenter')}
-            /> Centros de Ajuda
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="caps"
-              checked={activeFilters.caps}
-              onChange={() => handleFilterChange('caps')}
-            /> CAPS
-          </label>
+          {categories.map((category, index) => (
+            <label key={index}>
+              <input
+                type="checkbox"
+                name={category}
+                checked={activeFilters[category]}
+                onChange={() => handleFilterChange(category)}
+              /> {category.charAt(0).toUpperCase() + category.slice(1).replace(/([A-Z])/g, ' $1')}
+            </label>
+          ))}
           <button className="add-marker-button" onClick={handleAddMarker}>
             Adicionar Marcador
           </button>
