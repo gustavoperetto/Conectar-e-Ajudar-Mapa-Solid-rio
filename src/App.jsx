@@ -6,24 +6,24 @@ import './App.css';
 const App = () => {
   const position = [-26.292977, -48.848306];
 
-  const categories = ["food", "shelter", "emergency", "helpCenter", "caps"];
+  const categories = ["alimentação", "abrigo", "emergencia", "centro_de_ajuda", "caps"];
 
   const [markers, setMarkers] = useState([
     {
       position: [-26.304408, -48.846383],
       title: "Centro de Ajuda",
       description: "Local de assistência para pessoas em necessidade.",
-      category: "helpCenter",
+      category: "centro_de_ajuda",
       hours: [{ from: "09:00", to: "18:00" }],
       info: "Oferece suporte psicológico e assistencial.",
     }
   ]);
 
   const [activeFilters, setActiveFilters] = useState({
-    food: true,
-    shelter: true,
-    emergency: true,
-    helpCenter: true,
+    alimentação: true,
+    abrigo: true,
+    emergencia: true,
+    centro_de_ajuda: true,
     caps: true,
   });
 
@@ -31,7 +31,6 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [isAddingMarker, setIsAddingMarker] = useState(false);
 
-  // Estado para armazenar um novo marcador enquanto está sendo adicionado
   const [newMarker, setNewMarker] = useState({
     position: null,
     title: '',
@@ -57,7 +56,6 @@ const App = () => {
     setShowFilters(!showFilters);
   };
 
-  // Filtra os marcadores com base nos filtros ativos
   const filteredMarkers = markers.filter((marker) => {
     const categoryKey = marker.category;
     return activeFilters[categoryKey];
